@@ -1,0 +1,7 @@
+# Project exclude paths
+/.gradle/
+/atti-api/build/
+/atti-api/build/classes/java/main/
+/atti-api/build/classes/java/test/
+/atti-common/build/
+/atti-common/build/classes/java/main/

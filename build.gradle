@@ -1,0 +1,39 @@
+buildscript {
+    ext {
+        spring = "2.4.1"
+        boot = "org.springframework.boot"
+        lombok = "org.projectlombok:lombok"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("$boot:spring-boot-gradle-plugin:$spring")
+    }
+}
+
+allprojects {
+    group = "com.atti.aroo"
+    version = "1.0.0"
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: boot
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "idea"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly lombok
+        testCompileOnly lombok
+        annotationProcessor lombok
+        testAnnotationProcessor lombok
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation "$boot:spring-boot-starter-test"
+    }
+
+}
