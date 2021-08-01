@@ -18,6 +18,10 @@ public class RepositoryTest {
     private MemberRepository memberRepository;
 
 
+
+
+
+
     @DisplayName("1. save")
     @Test
     void test_1(){
