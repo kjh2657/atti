@@ -65,4 +65,26 @@ public class TestController {
 
         return ResponseEntity.status(HttpStatus.OK).body(member);
     }
+
+    @GetMapping("/math")
+    public int mathException(@RequestParam int a, @RequestParam int b){
+        return a/b;
+    }
+
+    @GetMapping("/null")
+    public void nullException(){
+        throw new NullPointerException("nullllll");
+    }
+
+    @GetMapping("/missing")
+    public int missException(@RequestParam int a, @RequestParam int b){
+
+        //throw new NullPointerException("nullllll");
+
+        int c = 0 ;
+        c += a;
+        c += b;
+
+        return c;
+    }
 }
