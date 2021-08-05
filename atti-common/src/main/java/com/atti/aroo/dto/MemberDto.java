@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Size;
+
 
 @Data
 @AllArgsConstructor
@@ -14,5 +16,6 @@ public class MemberDto {
 
     private String name;
     private String age;
+    private String userId;
 
 }

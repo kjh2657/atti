@@ -87,4 +87,12 @@ public class TestController {
 
         return c;
     }
+
+    @PostMapping("/constr")
+    public void constr(@RequestBody MemberDto member){
+        Member member1 = new Member();
+        member1.setName(member.getName());
+        member1.setUserId(member1.getUserId());
+        memberRepository.save(member1);
+    }
 }

@@ -33,6 +33,7 @@ subprojects {
         annotationProcessor lombok
         testAnnotationProcessor lombok
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
         testImplementation "$boot:spring-boot-starter-test"
     }
 
