@@ -3,6 +3,7 @@ package com.atti.aroo.support.advice;
 
 import com.atti.aroo.support.dto.Error;
 import com.atti.aroo.support.dto.ErrorResponse;
+import com.atti.aroo.support.exception.CustomException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -65,7 +66,6 @@ public class ApiControllerAdvice {
     }
 
 
-
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity constraintViolationException(ConstraintViolationException e, HttpServletRequest httpServletRequest) {
 
@@ -93,4 +93,14 @@ public class ApiControllerAdvice {
 
     //CustomException구현 후 여기서 받기
 
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity customException(CustomException e, HttpServletRequest httpServletRequest) {
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage(e.getMessage());
+        errorResponse.setRequestUrl(httpServletRequest.getRequestURI());
+        errorResponse.setStatusCode(BAD_REQUEST.toString());
+
+        return ResponseEntity.status(BAD_REQUEST).body(errorResponse);
+    }
 }

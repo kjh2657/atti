@@ -23,10 +23,10 @@ public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 5, max = 10)
+    @Size(min = 2, max = 10)
     private String name;
 
-    @Size(min =3, max=10)
-    @NotEmpty
+    @Size(min =2, max=10)
+    //@NotEmpty
     private String userId;
 }

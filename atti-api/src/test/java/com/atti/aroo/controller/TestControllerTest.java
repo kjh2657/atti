@@ -2,6 +2,7 @@ package com.atti.aroo.controller;
 
 import com.atti.aroo.repository.MemberRepository;
 import com.atti.aroo.support.aop.TimerAop;
+import com.atti.aroo.support.exception.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.util.StopWatch;
 
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -43,5 +46,15 @@ class TestControllerTest {
 
         System.out.println("totalTimeMillis = " + totalTimeMillis);
         assertTrue(totalTimeMillis + " > 2000", totalTimeMillis > 2000 );
+    }
+
+    @DisplayName("2. exception")
+    @Test
+    void test_2() throws Exception {
+        CustomException customException = assertThrows(CustomException.class, ()->{
+            throw new CustomException("kkk");
+        });
+
+        assertEquals(customException.getMessage(), "kkk");
     }
 }
